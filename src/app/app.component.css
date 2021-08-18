@@ -1,0 +1,27 @@
+h1
+{
+    color: green;
+}
+
+input.ng-invalid
+{
+    border-left: 6px solid red;
+}
+
+input.ng-valid
+{
+    border-left: 6px solid green;
+}
+
+h1
+{
+    padding-left: 15px;
+}
+
+.error
+{
+    color: red;
+    
+    font-size: medium ;
+    
+}

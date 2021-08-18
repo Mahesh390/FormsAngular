@@ -1,0 +1,48 @@
+<h1>Angular Reactive form</h1>
+
+<div class="col-sm-6">
+<form [formGroup] ="loginForm" (ngSubmit)="onSubmit()" method="GET">
+    <div class="form-group">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" required class="form-control" formControlName="email" placeholder="enter email"/>
+     
+    <div *ngIf ="control('email')?.errors?.required" class="error">
+           Email to be entered in @gmail.com format only
+    </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" required class="form-control" formControlName = "password" placeholder="enter password"/>
+    </div>
+
+    <div *ngIf ="check('password')?.errors?.required" class="error">
+        Enter 8 Character Password with lowercase, uppercase letters, numbers and at least one lowercase letter and one uppercase letter
+     </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+  </form>
+</div>
+
+
+<br/>
+
+<h1>Template driven form</h1>
+<div class="col-sm-6">
+<form #userForm = "ngForm" (ngSubmit) = "onSub(userForm.value)">
+  <label for="email" class="form-label">Email address</label>
+<input type="email"  class="form-control"  name="emailid" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" #emailid="ngModel" required ngModel placeholder="enter your emailid"/>
+<span *ngIf="emailid.invalid && emailid.touched"
+class="error">Email cannot be empty should be @A-z.com</span>
+<br/>
+<label for="password" class="form-label">Password</label>
+<input type="password"  class="form-control"  name="Pasword" required ngModel placeholder="enter your Password" #Pasword="ngModel"  pattern="[A-Za-z]{3}"/>
+<span *ngIf="Pasword.invalid && Pasword.touched"
+class="error">Password cannot be empty first uppercase then lowercase 3 characters</span>
+<br/>
+<button type="submit"  class="btn btn-primary">login</button>
+</form>
+</div>
+
+
